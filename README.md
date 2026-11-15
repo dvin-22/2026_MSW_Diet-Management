@@ -44,6 +44,7 @@
 
 ### 테스트 실행
 - 단위 테스트: `./gradlew test`
+- Compose UI 테스트(에뮬레이터 또는 실기기 연결 필요): `./gradlew connectedAndroidTest`
 
 ## 3. 영양 데이터 출처
 - 식품의약품안전처 식품영양성분 데이터베이스(https://various.foodsafetykorea.go.kr/nutrient/)
@@ -362,5 +363,19 @@ ViewModel 단위 테스트를 만들어줘. `runTest`와 `TestDispatcherRule`(`D
 - `MealListViewModel`: Repository가 예외를 던지면 `Error`
 ```
 **결과**: `Dispatchers.Main`을 바꾸는 `TestDispatcherRule`을 만들고, `FakeMealRepository`에 예외를 던지는 옵션을 추가함. `MealInputViewModelTest` 2개, `MealListViewModelTest` 2개를 작성해 모두 통과.
+
+28. Compose UI 테스트
+```
+`app/src/androidTest`에 Compose UI 테스트를 만들어줘(`createComposeRule`). 화면에는 Fake Repository를 넣은 ViewModel을 주입해줘.
+
+1. 입력 화면에서 음식을 검색해 200g을 담으면 영양소 미리보기에 계산된 열량이 표시됨
+2. 목록 화면에서 식사 카드를 누르면 상세 화면으로 이동해 음식 이름이 보임
+3. 분석 화면 하단에 데이터 출처 문구가 표시됨
+4. 다크 테마(`darkTheme = true`)로 목록 화면을 띄워도 식사 카드와 날짜 헤더가 표시됨
+5. 기록 탭에서 카드를 누르면 기기 크기에 맞게 보이는지 테스트 2개로 나눠줘. 창 크기를 코드로 강제로 바꾸지 말고, 각 테스트는 시작할 때 현재 기기가 대상이 아니면 `assumeTrue`로 건너뛰게 해줘
+   - 넓은 화면용(2단이 되는 태블릿 가로 화면): 목록과 상세 내용이 동시에 보임
+   - 좁은 화면용(폰 세로): 상세만 보이고 목록은 보이지 않음
+```
+**결과**: androidTest용 Fake와 UI 테스트 6개(입력 미리보기, 카드→상세, 분석 출처, 다크 테마 목록, 넓은/좁은 화면 기록 탭)를 작성함. 2단 여부는 `ListDetailPaneScaffold` 기본 계산과 같은 `calculatePaneScaffoldDirective`로 판단해 `assumeTrue`로 건너뜀. Pixel 8 에뮬레이터에서 5개 통과, 넓은 화면 테스트 1개는 건너뜀.
 
 ### 조가람 (@river040118)

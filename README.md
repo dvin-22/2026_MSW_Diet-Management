@@ -158,4 +158,19 @@ grams가 0 이하면 0을 반환하게 해줘.
 ```
 **결과**: `MealRepository` 인터페이스와 `filesDir/meals.json`에 전체 목록을 저장하는 `FileMealRepository`를 만듦(최신순 정렬, 파일 없으면 빈 목록, 파일 입출력은 IO 디스패처). 빌드 성공.
 
+10. 사진 저장소
+```
+`data/PhotoStorage` 인터페이스와 구현 클래스 `FilePhotoStorage`를 만들어줘(테스트에서 Fake로 교체할 수 있게).
+
+- `suspend fun savePhoto(uri: String): String`: Photo Picker로 받은 사진의 Uri를 문자열로 받아(로컬 단위 테스트에서 안드로이드 `Uri`를 만들 수 없으니까) 구현 안에서 `Uri`로 바꾸고, `filesDir/photos/` 아래에 고유한 파일명으로 복사한 뒤 저장된 파일 경로를 반환
+- 복사는 `withContext(Dispatchers.IO)`로
+```
+**결과**: `PhotoStorage` 인터페이스와 Uri 문자열을 `filesDir/photos/UUID.jpg`로 복사해 경로를 돌려주는 `FilePhotoStorage`를 만듦(IO 디스패처, 열 수 없으면 `IOException`). 빌드 성공.
+
+11. 의존성 연결 준비
+```
+ViewModel은 생성자로 Repository와 `PhotoStorage` 인터페이스를 받게 할 거야(테스트에서 Fake로 교체할 수 있게). 앱의 최상단 Composable에서 `LocalContext`로 `AssetFoodRepository`, `FileMealRepository`, `FilePhotoStorage`를 한 번만 만들고(`remember`), 각 화면에서는 `viewModel { MealListViewModel(mealRepository, foodRepository) }`처럼 람다로 넘겨서 만들 수 있게 준비해줘. `Application` 클래스나 `ViewModelProvider.Factory`는 만들지 마. 필요한 lifecycle-viewmodel-compose 의존성도 추가해줘.
+```
+**결과**: lifecycle-viewmodel-compose 의존성을 추가하고, 최상단 `DietApp`에서 Repository·PhotoStorage를 `remember`로 한 번만 만들어 인터페이스 타입으로 넘기도록 함. `MainActivity`는 `DietApp()`만 호출하게 바꿈. 빌드 성공.
+
 ### 조가람 (@river040118)

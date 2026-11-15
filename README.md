@@ -38,8 +38,12 @@
 1. 저장소를 clone한다.
 2. Android Studio에서 프로젝트 폴더를 연다.
 3. Gradle Sync가 끝날 때까지 기다린다.
+
 ### 실행
 4. 에뮬레이터 또는 실기기(Android 11 이상)를 선택하고 `Run 'app'`을 누른다.
+
+### 테스트 실행
+- 단위 테스트: `./gradlew test`
 
 ## 3. 영양 데이터 출처
 - 식품의약품안전처 식품영양성분 데이터베이스(https://various.foodsafetykorea.go.kr/nutrient/)
@@ -347,5 +351,16 @@ ViewModel은 생성자로 Repository와 `PhotoStorage` 인터페이스를 받게
 - 이미 만든 화면에 하드코딩된 색이 있으면 `MaterialTheme.colorScheme` 참조로 바꿔줘
 ```
 **결과**: 자몽 단색 팔레트로 `lightColorScheme`과 `darkColorScheme`을 만들고, 시스템 다크 모드를 따르며 다이나믹 컬러를 제거함. 주요 글자/배경 조합의 대비를 계산해 모두 4.5:1 이상인지 확인함. `Shape.kt`를 추가하고 화면의 모서리 값을 `MaterialTheme.shapes`로 바꿈. 빌드 성공.
+
+27. ViewModel 단위 테스트
+```
+ViewModel 단위 테스트를 만들어줘. `runTest`와 `TestDispatcherRule`(`Dispatchers.Main` 교체)을 쓰고, Repository는 Fake를 넣어줘.
+
+- `MealInputViewModel`: 음식을 담으면 미리보기 영양 합계가 계산됨
+- `MealInputViewModel`: 사진이 없으면 저장되지 않고 오류 상태가 됨
+- `MealListViewModel`: 식사가 있으면 `Success`, 날짜별 그룹으로 나뉨
+- `MealListViewModel`: Repository가 예외를 던지면 `Error`
+```
+**결과**: `Dispatchers.Main`을 바꾸는 `TestDispatcherRule`을 만들고, `FakeMealRepository`에 예외를 던지는 옵션을 추가함. `MealInputViewModelTest` 2개, `MealListViewModelTest` 2개를 작성해 모두 통과.
 
 ### 조가람 (@river040118)

@@ -194,4 +194,32 @@ ViewModel은 생성자로 Repository와 `PhotoStorage` 인터페이스를 받게
 ```
 **결과**: navigation-compose 2.9.5와 navigation-suite 의존성을 추가함. `NavigationSuiteScaffold`의 "기록"·"분석" 탭과 `NavHost`로 화면 3개를 연결하고, 입력 화면에서는 탭 바를 숨기도록 함. 아이콘은 벡터 drawable로 추가함. 빌드 성공.
 
+14. 식사 목록 ViewModel
+```
+`MealListViewModel`을 만들어줘. `viewModelScope.launch`로 `MealRepository.getMeals()`와 `FoodRepository.getFoods()`를 불러와 화면 상태를 만들어줘.
+
+- 다시 불러오는 `refresh()` 함수를 만들고, 목록 화면이 다시 보일 때(입력 화면에서 저장하고 돌아왔을 때 포함) 호출되게 해줘
+- 불러오다 예외가 나면 `Error` 상태로
+
+- UI 상태는 `sealed interface MealListUiState { Loading, Success, Error }`
+- `Success`에는 날짜별 그룹 목록을 담아줘. 그룹마다 날짜, 그날의 총 열량, 끼니 수(`dailySummaries` 활용), 그날의 식사 목록(식사마다 열량 포함)
+- `StateFlow`는 읽기 전용으로 공개해줘(`private val _uiState = MutableStateFlow`, 외부에는 `asStateFlow()`)
+```
+**결과**: `MealListUiState`(Loading/Success/Error)와 날짜별 그룹 모델, `refresh()`로 목록을 불러오는 `MealListViewModel`을 만듦. 목록 화면에서 `viewModel { }` 람다로 생성하고, 화면이 다시 보일 때마다 `LaunchedEffect`로 `refresh()`를 호출함. 빌드 성공.
+
+15. 식사 목록 화면
+```
+`MealListScreen`을 만들어줘. 목록은 `LazyColumn`으로. 사진 표시에 필요한 coil-compose 의존성도 추가해줘.
+
+- 날짜 그룹마다 `stickyHeader`로 "11월 14일 (금) · 1,850.0 kcal · 3끼" 같은 헤더를 보여줘
+- 식사마다 `Card`로 왼쪽에 사진(Coil `AsyncImage`, 정사각형 Crop), 오른쪽에 끼니 종류, 시각, 열량
+- `items`에는 `key = { it.id }`를 줘
+- 카드를 탭하면 `onMealClick(mealId)` 콜백을 호출해줘(상세 연결은 7단계에서)
+- 오른쪽 아래 FAB(+)를 누르면 `MealInput`으로 이동
+- 선택된 식사 id를 매개변수로 받아서, 선택된 카드는 강조 색으로 표시해줘(2단 화면용)
+- 기록이 없으면 "아직 기록한 식사가 없어요" 안내
+- 사진에는 `contentDescription`을 넣어줘(스크린리더용 접근성)
+```
+**결과**: coil-compose 3.3.0을 추가하고, `LazyColumn`에 날짜별 `stickyHeader`와 식사 `Card`(정사각형 사진·끼니·시각·열량)를 보여 주는 목록 화면을 만듦. 선택 카드 강조, 빈 목록 안내, 사진 `contentDescription`, FAB 이동을 넣음. 빌드 성공.
+
 ### 조가람 (@river040118)

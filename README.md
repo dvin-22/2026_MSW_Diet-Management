@@ -137,4 +137,25 @@ grams가 0 이하면 0을 반환하게 해줘.
 ```
 **결과**: `MealAnalyzerTest`에 테스트 7개(30일 경계 2, 빈 목록 1, 끼니별 합계 2, 날짜별 요약 2)를 작성함. 모두 통과해 단위 테스트가 총 13개가 됨.
 
+8. 음식 Repository와 검색 함수
+```
+`data/FoodRepository` 인터페이스와 이를 구현한 `AssetFoodRepository`를 만들어줘. ViewModel이 인터페이스에만 의존하게 해서, 테스트에서는 Fake 구현으로 바꿔 끼울 수 있게 해줘.
+
+- `suspend fun getFoods(): List<Food>`: `assets/foods.json`을 kotlinx-serialization으로 파싱. `withContext(Dispatchers.IO)`로 main-safe하게
+
+검색 기능은 Repository에 넣지 말고, `domain/FoodSearch.kt`에 순수 함수 `searchFoods(foods: List<Food>, query: String): List<Food>`로 만들어줘. 이름에 query가 포함된 음식만 `filter`로 거르고, query가 공백뿐이면 빈 목록을 돌려줘.
+```
+**결과**: `FoodRepository` 인터페이스와 assets의 JSON을 IO 디스패처에서 파싱하는 `AssetFoodRepository`를 만듦. 순수 함수 `searchFoods`(앞뒤 공백 제거 후 이름 포함 검색)를 추가함. 빌드 성공.
+
+9. 식사 Repository
+```
+`data/MealRepository` 인터페이스와 `FileMealRepository` 구현을 만들어줘.
+
+- 저장 위치: `context.filesDir/meals.json`에 식사 전체 목록을 JSON으로
+- `suspend fun getMeals(): List<Meal>`: 저장된 식사 목록(최신순). 파일이 없으면 빈 목록
+- `suspend fun addMeal(meal: Meal)`, `suspend fun getMeal(id: String): Meal?`
+- 파일 읽기와 쓰기는 `withContext(Dispatchers.IO)`로
+```
+**결과**: `MealRepository` 인터페이스와 `filesDir/meals.json`에 전체 목록을 저장하는 `FileMealRepository`를 만듦(최신순 정렬, 파일 없으면 빈 목록, 파일 입출력은 IO 디스패처). 빌드 성공.
+
 ### 조가람 (@river040118)

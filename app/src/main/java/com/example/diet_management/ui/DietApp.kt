@@ -7,6 +7,7 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffo
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffoldDefaults
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
@@ -29,12 +30,13 @@ import com.example.diet_management.data.PhotoStorage
 import com.example.diet_management.ui.analysis.AnalysisScreen
 import com.example.diet_management.ui.input.MealInputScreen
 import com.example.diet_management.ui.input.MealInputViewModel
-import com.example.diet_management.ui.list.MealListScreen
-import com.example.diet_management.ui.list.MealListViewModel
+import com.example.diet_management.ui.list.MealRecordPane
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.diet_management.ui.navigation.Analysis
 import com.example.diet_management.ui.navigation.MealInput
 import com.example.diet_management.ui.navigation.MealList
+
+private const val NEW_MEAL_ID_KEY = "newMealId"
 
 /** 하단 바/레일에 보여 줄 탭. */
 private enum class Tab(val label: String, val iconRes: Int, val route: Any) {
@@ -93,12 +95,16 @@ private fun DietContent(
         },
     ) {
         NavHost(navController = navController, startDestination = MealList) {
-            composable<MealList> {
-                val viewModel = viewModel { MealListViewModel(mealRepository, foodRepository) }
-                MealListScreen(
-                    viewModel = viewModel,
-                    selectedMealId = null, // 2단 화면(ListDetailPaneScaffold)에서 연결
-                    onMealClick = { }, // 상세 화면 연결은 다음 단계에서
+            composable<MealList> { entry ->
+                // 입력 화면이 저장 후 넘겨 준 새 식사 id
+                val newMealId by entry.savedStateHandle
+                    .getStateFlow<String?>(NEW_MEAL_ID_KEY, null)
+                    .collectAsState()
+                MealRecordPane(
+                    mealRepository = mealRepository,
+                    foodRepository = foodRepository,
+                    newMealId = newMealId,
+                    onNewMealShown = { entry.savedStateHandle[NEW_MEAL_ID_KEY] = null },
                     onAddClick = { navController.navigate(MealInput) },
                 )
             }
@@ -112,8 +118,11 @@ private fun DietContent(
                 MealInputScreen(
                     viewModel = viewModel,
                     onBack = { navController.navigateUp() },
-                    // 새 식사 선택은 2단 화면(ListDetailPaneScaffold) 단계에서 연결
-                    onSaved = { navController.popBackStack() },
+                    // 저장한 식사 id를 목록 화면에 넘기고 돌아가면, 목록이 그 식사를 선택한다.
+                    onSaved = { mealId ->
+                        navController.previousBackStackEntry?.savedStateHandle?.set(NEW_MEAL_ID_KEY, mealId)
+                        navController.popBackStack()
+                    },
                 )
             }
         }

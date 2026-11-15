@@ -278,4 +278,29 @@ ViewModel은 생성자로 Repository와 `PhotoStorage` 인터페이스를 받게
 ```
 **결과**: 기본 정보와 음식·저장 영역을 Composable 묶음으로 한 번만 정의하고, 840dp 이상이면 `Row` 2단, 미만이면 한 줄 세로 스크롤로 배치함. 빌드 성공.
 
+21. 식사 상세 화면
+```
+`MealDetailViewModel`과 `MealDetailScreen`을 만들어줘. 매개변수로 받은 `mealId`로 `MealRepository`에서 식사를 조회해줘(화면에는 id만 전달하고 데이터는 Repository에서 조회).
+
+- 위에서부터 큰 사진, 날짜와 시각, 끼니 종류
+- 먹은 음식마다 이름, 섭취량(g), 탄·단·지, 열량
+- 맨 아래 합계 카드: 총 탄수화물, 단백질, 지방, 열량
+- 숫자는 소수점 1자리. 없는 id면 "기록을 찾을 수 없어요"
+- 상단 앱바의 뒤로가기 아이콘은 한 화면일 때만 보이게 `showBack` 매개변수로 받아줘
+```
+**결과**: `mealId`로 식사와 음식 정보를 조회해 음식별 영양소·합계를 만드는 `MealDetailViewModel`(Loading/Success/Error)과, 사진·날짜·끼니·음식 목록·합계 카드를 보여 주는 `MealDetailScreen`(`showBack`으로 뒤로가기 표시)을 만듦. 빌드 성공.
+
+22. 기록 탭 목록-상세 2단 화면
+```
+`ListDetailPaneScaffold`로 기록 탭을 구성해줘. 필요한 material3-adaptive 레이아웃 의존성도 추가해줘.
+
+- `rememberListDetailPaneScaffoldNavigator<String>()`를 쓰고, `listPane`에는 `MealListScreen`, `detailPane`에는 `MealDetailScreen`
+- 카드를 누르면 `navigator.navigateTo(ListDetailPaneScaffoldRole.Detail, mealId)`
+- 2단으로 바뀌는 기준은 `ListDetailPaneScaffold`의 기본 동작 그대로 둬
+- 2단인데 선택한 식사가 없으면 상세 쪽에 "왼쪽에서 식사를 선택하세요"
+- 한 화면일 때 시스템 Back을 누르면 상세에서 목록으로 돌아가게 해줘
+- 선택된 식사 id는 회전해도 유지되게 해줘
+```
+**결과**: adaptive-layout·adaptive-navigation 1.2.0을 추가하고, `MealRecordPane`에서 `ListDetailPaneScaffold`로 목록과 상세를 배치함. 카드 선택, 빈 상세 안내, 한 화면일 때 `BackHandler`로 목록 복귀, navigator로 선택 id 유지를 구현함. 저장 후 돌아오면 새 식사를 선택하도록 연결함. 빌드 성공.
+
 ### 조가람 (@river040118)

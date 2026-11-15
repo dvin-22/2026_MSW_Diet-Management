@@ -303,4 +303,25 @@ ViewModel은 생성자로 Repository와 `PhotoStorage` 인터페이스를 받게
 ```
 **결과**: adaptive-layout·adaptive-navigation 1.2.0을 추가하고, `MealRecordPane`에서 `ListDetailPaneScaffold`로 목록과 상세를 배치함. 카드 선택, 빈 상세 안내, 한 화면일 때 `BackHandler`로 목록 복귀, navigator로 선택 id 유지를 구현함. 저장 후 돌아오면 새 식사를 선택하도록 연결함. 빌드 성공.
 
+23. 분석 ViewModel
+```
+`AnalysisViewModel`을 만들어줘. `MealAnalyzer`로 최근 30일 데이터를 계산해서 상태로 공개해줘.
+
+- 30일 총 열량, 30일 끼니 수
+- 끼니 종류별 탄수화물·단백질·지방(g)과 열량, 그리고 탄·단·지 비율
+```
+**결과**: `AnalysisUiState`(Loading/Success/Error)와 `AnalysisViewModel`을 만들어 최근 30일 총 열량·끼니 수·끼니 종류별 영양 합계와 비율을 계산함. 비율은 열량 기준(탄·단 4, 지 9kcal/g)으로 계산하는 순수 함수 `macroRatio`를 `NutritionCalculator`에 추가함. 빌드 성공.
+
+24. 분석 화면
+```
+`AnalysisScreen`을 만들어줘.
+
+- 상단 카드: "최근 30일 총 섭취 열량"을 크게 표시
+- 끼니 종류마다 카드 하나: 열량, 그리고 탄수화물·단백질·지방 비율을 `LinearProgressIndicator` 막대 3개로(라벨과 g 함께)
+- 맨 아래 작은 글씨로 "영양 데이터 출처: 식품의약품안전처 식품영양성분 데이터베이스"
+- 출처 텍스트에 `testTag`를 붙여줘
+- 끼니별 카드 4개는 `LazyVerticalGrid`로 배치해서, 창 너비가 840dp 이상이면 2열(`GridCells.Fixed(2)`), 그보다 좁으면 1열이 되게 해줘. 창 너비는 `currentWindowAdaptiveInfo()`로 읽어줘
+```
+**결과**: `LazyVerticalGrid`(840dp 이상 2열, 미만 1열)에 총 열량 카드(전체 폭), 끼니별 카드 4개(열량, 탄·단·지 g·비율 막대), 출처 문구(전체 폭, `testTag`)를 배치한 분석 화면을 만듦. 빌드 성공.
+
 ### 조가람 (@river040118)

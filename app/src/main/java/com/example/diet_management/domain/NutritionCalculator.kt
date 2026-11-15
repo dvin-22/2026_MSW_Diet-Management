@@ -1,6 +1,7 @@
 package com.example.diet_management.domain
 
 import com.example.diet_management.model.Food
+import com.example.diet_management.model.MacroRatio
 import com.example.diet_management.model.Nutrition
 import java.util.Locale
 
@@ -26,6 +27,19 @@ object NutritionCalculator {
         protein = list.sumOf { it.protein },
         fat = list.sumOf { it.fat },
     )
+
+    /**
+     * 탄·단·지 열량 비율. 1g당 탄수화물 4kcal, 단백질 4kcal, 지방 9kcal로 환산해 나눈다.
+     * 세 영양소가 모두 0이면 비율도 모두 0이다.
+     */
+    fun macroRatio(nutrition: Nutrition): MacroRatio {
+        val carbKcal = nutrition.carb * 4
+        val proteinKcal = nutrition.protein * 4
+        val fatKcal = nutrition.fat * 9
+        val total = carbKcal + proteinKcal + fatKcal
+        if (total <= 0) return MacroRatio(0.0, 0.0, 0.0)
+        return MacroRatio(carbKcal / total, proteinKcal / total, fatKcal / total)
+    }
 
     /** 표시용 문자열. 소수점 1자리 반올림, 천 단위 쉼표 (예: 1850.25 → "1,850.3"). */
     fun formatOneDecimal(value: Double): String =

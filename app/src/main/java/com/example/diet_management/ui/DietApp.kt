@@ -28,6 +28,7 @@ import com.example.diet_management.data.FoodRepository
 import com.example.diet_management.data.MealRepository
 import com.example.diet_management.data.PhotoStorage
 import com.example.diet_management.ui.analysis.AnalysisScreen
+import com.example.diet_management.ui.analysis.AnalysisViewModel
 import com.example.diet_management.ui.input.MealInputScreen
 import com.example.diet_management.ui.input.MealInputViewModel
 import com.example.diet_management.ui.list.MealRecordPane
@@ -109,7 +110,8 @@ private fun DietContent(
                 )
             }
             composable<Analysis> {
-                AnalysisScreen()
+                val viewModel = viewModel { AnalysisViewModel(mealRepository, foodRepository) }
+                AnalysisScreen(viewModel = viewModel)
             }
             composable<MealInput> {
                 val viewModel = viewModel {

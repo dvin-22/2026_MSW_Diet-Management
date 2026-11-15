@@ -324,4 +324,14 @@ ViewModel은 생성자로 Repository와 `PhotoStorage` 인터페이스를 받게
 ```
 **결과**: `LazyVerticalGrid`(840dp 이상 2열, 미만 1열)에 총 열량 카드(전체 폭), 끼니별 카드 4개(열량, 탄·단·지 g·비율 막대), 출처 문구(전체 폭, `testTag`)를 배치한 분석 화면을 만듦. 빌드 성공.
 
+25. 첫 실행 샘플 데이터
+```
+앱을 처음 실행할 때만(`meals.json`이 없을 때) 최근 30일치 샘플 식사를 만들어 저장해줘.
+
+- 하루 2~4끼, 끼니 종류와 시각은 그럴듯하게, 음식은 `foods.json`에서 끼니에 어울리게
+- 사진은 `res/drawable/sample_meal/`의 이미지를 `filesDir/photos/`로 복사해서 사용
+- 샘플 생성 로직은 `data/SampleDataSeeder`로 분리해줘
+```
+**결과**: 리소스 폴더는 하위 폴더·한글 파일명을 쓸 수 없어 사진 10장을 `assets/sample_meal/`로 옮기고 1280px로 줄임. `SampleDataSeeder`가 `meals.json`이 없을 때만 사진별 음식 구성으로 하루 2~4끼, 30일치 샘플을 만들고, `DietApp`이 샘플 생성 후 화면을 띄우도록 함. 빌드 성공.
+
 ### 조가람 (@river040118)

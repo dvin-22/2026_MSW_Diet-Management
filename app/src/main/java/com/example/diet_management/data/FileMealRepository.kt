@@ -31,7 +31,8 @@ class FileMealRepository(context: Context) : MealRepository {
         }
     }
 
-    private companion object {
+    companion object {
+        /** SampleDataSeeder가 첫 실행 여부를 확인할 때도 쓴다. */
         const val FILE_NAME = "meals.json"
     }
 }

@@ -25,6 +25,17 @@ import com.example.diet_management.data.AssetFoodRepository
 import com.example.diet_management.data.FileMealRepository
 import com.example.diet_management.data.FilePhotoStorage
 import com.example.diet_management.data.FoodRepository
+import com.example.diet_management.data.SampleDataSeeder
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import kotlinx.coroutines.CancellationException
 import com.example.diet_management.data.MealRepository
 import com.example.diet_management.data.PhotoStorage
 import com.example.diet_management.ui.analysis.AnalysisScreen
@@ -56,6 +67,26 @@ fun DietApp() {
     val foodRepository: FoodRepository = remember { AssetFoodRepository(context) }
     val mealRepository: MealRepository = remember { FileMealRepository(context) }
     val photoStorage: PhotoStorage = remember { FilePhotoStorage(context) }
+
+    // 첫 실행이면 샘플 식사를 먼저 만들고, 끝난 뒤에 화면을 보여 준다(목록이 빈 채로 먼저 뜨지 않게).
+    var isReady by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        if (!isReady) {
+            try {
+                SampleDataSeeder(context, mealRepository).seedIfNeeded()
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                // 샘플을 못 만들어도 앱은 빈 기록으로 쓸 수 있으므로 그대로 진행한다.
+            }
+            isReady = true
+        }
+    }
+
+    if (!isReady) {
+        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { CircularProgressIndicator() }
+        return
+    }
 
     DietContent(
         foodRepository = foodRepository,

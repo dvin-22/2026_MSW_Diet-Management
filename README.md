@@ -112,4 +112,29 @@ grams가 0 이하면 0을 반환하게 해줘.
 ```
 **결과**: `NutritionCalculatorTest`에 Given-When-Then 구조의 테스트 6개(100g, 250g, 0g, 합계, 반올림 2개)를 작성함. 6개 모두 통과.
 
+6. 식사 분석 함수
+```
+`domain/MealAnalyzer.kt`에 순수 함수를 만들어줘. 음식 정보는 `Map<String, Food>`로 받아.
+
+1. `mealNutrition(meal, foods)`: 식사 한 끼의 영양 합계
+2. `filterLast30Days(meals, today: LocalDate)`: 오늘 포함 최근 30일 식사만
+3. `totalKcal(meals, foods)`: 열량 총량
+4. `nutritionByMealType(meals, foods)`: `MealType`별 탄·단·지·열량 합계. 기록이 없는 끼니도 0으로 포함
+5. `dailySummaries(meals, foods)`: 날짜별 열량 합계와 끼니 수. `groupBy`를 써서 최신 날짜 순으로
+
+`today`는 매개변수로 받아서 테스트에서 날짜를 고정할 수 있게 해줘.
+```
+**결과**: `MealAnalyzer` object에 5개 순수 함수를 만들고, 날짜별 요약용 `DailySummary` 모델을 추가함. 최근 30일은 `today-29일 ~ today`로 계산함. 빌드 성공.
+
+7. 식사 분석 단위 테스트
+```
+`MealAnalyzer`의 JUnit 테스트를 만들어줘. 테스트용 음식 2개와 식사 몇 개를 직접 만들어서 다음을 검증해줘.
+
+- 30일 경계: 오늘, 29일 전은 포함되고 30일 전은 제외됨
+- 빈 목록이면 총 열량 0
+- 끼니별 합계가 맞고, 기록이 없는 끼니는 0
+- 날짜별 요약의 끼니 수와 열량, 날짜 정렬 순서
+```
+**결과**: `MealAnalyzerTest`에 테스트 7개(30일 경계 2, 빈 목록 1, 끼니별 합계 2, 날짜별 요약 2)를 작성함. 모두 통과해 단위 테스트가 총 13개가 됨.
+
 ### 조가람 (@river040118)

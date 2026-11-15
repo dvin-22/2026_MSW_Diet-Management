@@ -222,4 +222,18 @@ ViewModel은 생성자로 Repository와 `PhotoStorage` 인터페이스를 받게
 ```
 **결과**: coil-compose 3.3.0을 추가하고, `LazyColumn`에 날짜별 `stickyHeader`와 식사 `Card`(정사각형 사진·끼니·시각·열량)를 보여 주는 목록 화면을 만듦. 선택 카드 강조, 빈 목록 안내, 사진 `contentDescription`, FAB 이동을 넣음. 빌드 성공.
 
+16. 식사 입력 ViewModel
+```
+`MealInputViewModel`을 만들어줘. 생성자로 `MealRepository`, `FoodRepository`, `PhotoStorage`를 받아. 입력 상태는 `MealInputUiState` data class 하나로 묶고 `update { copy() }`로 갱신해줘.
+
+- 상태: 날짜, 시각(기본값은 현재), 끼니 종류(선택 전 null), 사진 경로, 담은 음식 목록(음식과 g), 검색어, 검색 결과, 미리보기 영양 합계
+- 이벤트 함수: 날짜·시각·끼니 변경, 검색어 변경, 음식 추가(g 입력), 음식 빼기, 사진 선택, 저장
+- 사진 선택 `selectPhoto(uri: String)`: `viewModelScope.launch`로 `PhotoStorage.savePhoto(uri)`를 호출해 복사하고, 돌려받은 경로를 상태에 저장. 복사에 실패하면 이유를 상태에 담아줘
+- ViewModel이 생성될 때 `viewModelScope.launch`로 `FoodRepository.getFoods()`를 한 번 불러와 음식 목록을 상태로 들고 있고, 검색어가 바뀌면 그 목록을 `searchFoods`로 걸러 검색 결과를 갱신
+- 미리보기 영양 합계는 음식 목록이 바뀔 때마다 `NutritionCalculator`로 다시 계산
+- g 입력은 `toDoubleOrNull() ?: 0.0`으로 변환
+- 저장 조건: 사진, 끼니 종류, 음식 1개 이상. 조건이 안 맞으면 저장하지 않고 이유를 상태에 담아줘
+```
+**결과**: `MealInputUiState` data class와 `MealInputViewModel`을 만듦. 생성 시 음식 목록을 불러오고, 검색·음식 추가/빼기(같은 음식은 g 합산, 0 이하 거부)·사진 복사·저장(사진·끼니·음식·미래 시각 검사)을 `update { copy() }`로 처리함. 빌드 성공.
+
 ### 조가람 (@river040118)

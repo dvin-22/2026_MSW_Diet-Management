@@ -88,4 +88,28 @@
 ```
 **결과**: serialization 플러그인과 kotlinx-serialization-json 1.9.0을 추가하고, `model` 패키지에 `Food`·`MealType`(한글 라벨)·`MealItem`·`Meal`(`localDateTime()` 변환 함수)·`Nutrition`을 만듦. 빌드 성공.
 
+4. 영양소 계산 함수
+```
+`domain/NutritionCalculator.kt`에 순수 함수만 모아줘. Android 클래스에 의존하지 않게 해.
+
+1. `calculate(food, grams)`: `100g당 값 × grams / 100`으로 `Nutrition` 계산
+2. `sum(list: List<Nutrition>)`: 합계
+3. `formatOneDecimal(value)`: 표시용으로 소수점 1자리 반올림 문자열 반환(저장값은 반올림하지 않음)
+
+grams가 0 이하면 0을 반환하게 해줘.
+```
+**결과**: `NutritionCalculator` object에 `calculate`(grams ≤ 0이면 0)·`sum`·`formatOneDecimal`(소수점 1자리, 천 단위 쉼표)을 순수 함수로 만듦. 빌드 성공.
+
+5. 영양소 계산 단위 테스트
+```
+`NutritionCalculator`의 JUnit 단위 테스트를 `app/src/test`에 만들어줘. Given-When-Then 구조로 다음을 검증해줘.
+
+- 100g이면 DB 값과 같음
+- 250g이면 2.5배
+- 0g이면 0 (경계값)
+- 여러 음식 합계
+- 소수점 1자리 반올림(예: 12.345 → "12.3", 12.35 → "12.4")
+```
+**결과**: `NutritionCalculatorTest`에 Given-When-Then 구조의 테스트 6개(100g, 250g, 0g, 합계, 반올림 2개)를 작성함. 6개 모두 통과.
+
 ### 조가람 (@river040118)

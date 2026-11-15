@@ -182,4 +182,16 @@ ViewModel은 생성자로 Repository와 `PhotoStorage` 인터페이스를 받게
 ```
 **결과**: kotlinx-coroutines-test 1.10.2를 추가하고, `fake` 패키지에 메모리 기반 Fake 3개를 만듦. `FoodSearchTest`에 테스트 2개를 작성해 모두 통과.
 
+13. 적응형 화면 뼈대
+```
+적응형 화면 뼈대를 만들어줘. 필요한 navigation-compose와 material3-adaptive-navigation-suite 의존성도 추가해줘.
+
+- 라우트(`@Serializable`): `MealList`, `Analysis`, `MealInput`
+- `NavigationSuiteScaffold`에 "기록"(`MealList`), "분석"(`Analysis`) 탭 2개. 창 크기에 따라 하단 바와 레일이 자동으로 바뀌게
+- 그 안에 `NavHost`로 3개 화면을 연결하고, 지금은 화면 이름만 보이는 빈 Composable로
+- 입력 화면에서는 탭 바를 숨기고, 상단 앱바의 뒤로가기는 `navigateUp()`으로
+- 목록→상세 이동은 다음 단계에서 `ListDetailPaneScaffold`로 만들 거니까 지금은 라우트를 만들지 마
+```
+**결과**: navigation-compose 2.9.5와 navigation-suite 의존성을 추가함. `NavigationSuiteScaffold`의 "기록"·"분석" 탭과 `NavHost`로 화면 3개를 연결하고, 입력 화면에서는 탭 바를 숨기도록 함. 아이콘은 벡터 drawable로 추가함. 빌드 성공.
+
 ### 조가람 (@river040118)

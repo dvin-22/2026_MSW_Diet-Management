@@ -1,19 +1,43 @@
 package com.example.diet_management.ui
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffoldDefaults
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.example.diet_management.R
 import com.example.diet_management.data.AssetFoodRepository
 import com.example.diet_management.data.FileMealRepository
 import com.example.diet_management.data.FilePhotoStorage
 import com.example.diet_management.data.FoodRepository
 import com.example.diet_management.data.MealRepository
 import com.example.diet_management.data.PhotoStorage
+import com.example.diet_management.ui.analysis.AnalysisScreen
+import com.example.diet_management.ui.input.MealInputScreen
+import com.example.diet_management.ui.list.MealListScreen
+import com.example.diet_management.ui.navigation.Analysis
+import com.example.diet_management.ui.navigation.MealInput
+import com.example.diet_management.ui.navigation.MealList
+
+/** 하단 바/레일에 보여 줄 탭. */
+private enum class Tab(val label: String, val iconRes: Int, val route: Any) {
+    RECORD("기록", R.drawable.ic_list, MealList),
+    ANALYSIS("분석", R.drawable.ic_bar_chart, Analysis),
+}
 
 /**
  * 앱 최상단 Composable.
@@ -34,14 +58,56 @@ fun DietApp() {
     )
 }
 
-/** 화면이 생기기 전까지 쓰는 임시 내용. 다음 단계에서 탭·화면으로 바꾼다. */
 @Composable
 private fun DietContent(
     foodRepository: FoodRepository,
     mealRepository: MealRepository,
     photoStorage: PhotoStorage,
 ) {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Text(text = "식단 관리", modifier = Modifier.padding(innerPadding))
+    val navController = rememberNavController()
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val destination = backStackEntry?.destination
+
+    // 입력 화면에서는 탭 바를 숨기고, 그 외에는 창 크기에 따라 하단 바/레일을 자동 선택한다.
+    val isInput = destination?.hasRoute<MealInput>() == true
+    val layoutType = if (isInput) {
+        NavigationSuiteType.None
+    } else {
+        NavigationSuiteScaffoldDefaults.calculateFromAdaptiveInfo(currentWindowAdaptiveInfo())
+    }
+
+    NavigationSuiteScaffold(
+        layoutType = layoutType,
+        navigationSuiteItems = {
+            Tab.entries.forEach { tab ->
+                item(
+                    selected = destination?.hierarchy?.any { it.hasRoute(tab.route::class) } == true,
+                    onClick = { navController.navigateToTab(tab.route) },
+                    icon = { Icon(painterResource(tab.iconRes), contentDescription = null) },
+                    label = { Text(tab.label) },
+                )
+            }
+        },
+    ) {
+        NavHost(navController = navController, startDestination = MealList) {
+            composable<MealList> {
+                MealListScreen(onAddClick = { navController.navigate(MealInput) })
+            }
+            composable<Analysis> {
+                AnalysisScreen()
+            }
+            composable<MealInput> {
+                MealInputScreen(onBack = { navController.navigateUp() })
+            }
+        }
+    }
+}
+
+/** 탭 이동: 시작 화면까지 비우고 각 탭의 상태를 저장·복원한다. */
+private fun NavHostController.navigateToTab(route: Any) {
+    navigate(route) {
+        popUpTo(graph.findStartDestination().id) { saveState = true }
+        launchSingleTop = true
+        restoreState = true
     }
 }

@@ -74,4 +74,18 @@
 ```
 **결과**: 100g 기준·분석 함량 데이터만으로 음식 100개를 골라 `selected_foods.txt`를 작성함. `convert_foods.py`로 `foods.json`을 생성함(ml 기준은 1 mL = 1 g으로 환산, 빈 값은 0으로 넣고 콘솔에 출력).
 
+3. 데이터 모델
+```
+`model` 패키지에 데이터 모델을 만들어줘. 필요한 Kotlin serialization 플러그인과 kotlinx-serialization-json 의존성도 추가해줘.
+
+- `Food`: `@Serializable`이고 `foods.json`의 필드(`id`, `name`, `category`, `kcalPer100g`, `carbPer100g`, `proteinPer100g`, `fatPer100g`)와 같게
+- `MealType`: enum으로 조식, 중식, 석식, 간식/음료 4가지. 각각 화면에 표시할 한글 라벨을 가짐
+- `MealItem`: `foodId`, `grams`
+- `Meal`: `id`(String), `dateTime`(String, ISO 형식 예: `"2026-11-15T12:30"`), `mealType`, `photoPath`, `items: List<MealItem>`
+- `Nutrition`: `kcal`, `carb`, `protein`, `fat` (Double)
+
+`Meal`은 JSON 파일에 저장할 거라 `@Serializable`로 만들어줘. 날짜·시각이 필요할 때는 `LocalDateTime.parse(dateTime)`으로 변환해서 쓰게 하고, 변환 함수를 `Meal` 안에 하나 만들어줘.
+```
+**결과**: serialization 플러그인과 kotlinx-serialization-json 1.9.0을 추가하고, `model` 패키지에 `Food`·`MealType`(한글 라벨)·`MealItem`·`Meal`(`localDateTime()` 변환 함수)·`Nutrition`을 만듦. 빌드 성공.
+
 ### 조가람 (@river040118)

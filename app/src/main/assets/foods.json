@@ -1,0 +1,902 @@
+[
+  {
+    "id": "D301-022000000-0001",
+    "name": "쌀밥",
+    "category": "밥류",
+    "kcalPer100g": 166.0,
+    "carbPer100g": 37.33,
+    "proteinPer100g": 3.36,
+    "fatPer100g": 0.32
+  },
+  {
+    "id": "D101-050000000-0001",
+    "name": "현미밥",
+    "category": "밥류",
+    "kcalPer100g": 172.0,
+    "carbPer100g": 38.9,
+    "proteinPer100g": 3.1,
+    "fatPer100g": 0.47
+  },
+  {
+    "id": "D101-047000000-0001",
+    "name": "콩나물밥",
+    "category": "밥류",
+    "kcalPer100g": 123.0,
+    "carbPer100g": 22.39,
+    "proteinPer100g": 4.68,
+    "fatPer100g": 1.58
+  },
+  {
+    "id": "D101-032000000-0001",
+    "name": "잡곡밥",
+    "category": "밥류",
+    "kcalPer100g": 146.0,
+    "carbPer100g": 29.33,
+    "proteinPer100g": 5.3,
+    "fatPer100g": 0.87
+  },
+  {
+    "id": "D101-016000000-0001",
+    "name": "보리밥",
+    "category": "밥류",
+    "kcalPer100g": 161.0,
+    "carbPer100g": 36.77,
+    "proteinPer100g": 2.9,
+    "fatPer100g": 0.24
+  },
+  {
+    "id": "D101-048020000-0001",
+    "name": "콩밥_검정콩",
+    "category": "밥류",
+    "kcalPer100g": 165.0,
+    "carbPer100g": 34.3,
+    "proteinPer100g": 4.53,
+    "fatPer100g": 1.12
+  },
+  {
+    "id": "D101-017070000-0001",
+    "name": "볶음밥_김치",
+    "category": "밥류",
+    "kcalPer100g": 167.0,
+    "carbPer100g": 15.74,
+    "proteinPer100g": 5.32,
+    "fatPer100g": 9.18
+  },
+  {
+    "id": "D101-018000000-0001",
+    "name": "비빔밥",
+    "category": "밥류",
+    "kcalPer100g": 142.0,
+    "carbPer100g": 18.84,
+    "proteinPer100g": 6.86,
+    "fatPer100g": 4.32
+  },
+  {
+    "id": "D101-044000000-0001",
+    "name": "카레라이스",
+    "category": "밥류",
+    "kcalPer100g": 108.0,
+    "carbPer100g": 20.74,
+    "proteinPer100g": 3.11,
+    "fatPer100g": 1.4
+  },
+  {
+    "id": "D101-028000000-0001",
+    "name": "오므라이스",
+    "category": "밥류",
+    "kcalPer100g": 173.0,
+    "carbPer100g": 20.54,
+    "proteinPer100g": 6.5,
+    "fatPer100g": 7.23
+  },
+  {
+    "id": "D101-010240000-0001",
+    "name": "덮밥_불고기",
+    "category": "밥류",
+    "kcalPer100g": 182.0,
+    "carbPer100g": 26.96,
+    "proteinPer100g": 6.6,
+    "fatPer100g": 5.31
+  },
+  {
+    "id": "D301-010150000-0001",
+    "name": "덮밥_간편조리세트_제육덮밥",
+    "category": "밥류",
+    "kcalPer100g": 183.0,
+    "carbPer100g": 25.63,
+    "proteinPer100g": 5.43,
+    "fatPer100g": 6.54
+  },
+  {
+    "id": "D101-007000000-0001",
+    "name": "김밥",
+    "category": "밥류",
+    "kcalPer100g": 140.0,
+    "carbPer100g": 19.98,
+    "proteinPer100g": 4.84,
+    "fatPer100g": 4.55
+  },
+  {
+    "id": "D101-042410000-0001",
+    "name": "초밥_유부초밥",
+    "category": "밥류",
+    "kcalPer100g": 194.0,
+    "carbPer100g": 29.82,
+    "proteinPer100g": 5.78,
+    "fatPer100g": 5.77
+  },
+  {
+    "id": "D101-019460000-0001",
+    "name": "삼각김밥_참치마요네즈",
+    "category": "밥류",
+    "kcalPer100g": 199.0,
+    "carbPer100g": 25.45,
+    "proteinPer100g": 5.93,
+    "fatPer100g": 8.21
+  },
+  {
+    "id": "D101-017000000-0001",
+    "name": "볶음밥",
+    "category": "밥류",
+    "kcalPer100g": 183.0,
+    "carbPer100g": 33.97,
+    "proteinPer100g": 5.56,
+    "fatPer100g": 2.76
+  },
+  {
+    "id": "D105-223000000-0001",
+    "name": "미역국",
+    "category": "국 및 탕류",
+    "kcalPer100g": 12.0,
+    "carbPer100g": 0.87,
+    "proteinPer100g": 0.65,
+    "fatPer100g": 0.61
+  },
+  {
+    "id": "D105-216180000-0001",
+    "name": "된장국_배추",
+    "category": "국 및 탕류",
+    "kcalPer100g": 20.0,
+    "carbPer100g": 2.58,
+    "proteinPer100g": 1.46,
+    "fatPer100g": 0.4
+  },
+  {
+    "id": "D105-253000000-0001",
+    "name": "콩나물국",
+    "category": "국 및 탕류",
+    "kcalPer100g": 6.0,
+    "carbPer100g": 0.61,
+    "proteinPer100g": 0.74,
+    "fatPer100g": 0.09
+  },
+  {
+    "id": "D105-219240000-0001",
+    "name": "무국_소고기",
+    "category": "국 및 탕류",
+    "kcalPer100g": 15.0,
+    "carbPer100g": 1.1,
+    "proteinPer100g": 1.33,
+    "fatPer100g": 0.64
+  },
+  {
+    "id": "D105-226000000-0001",
+    "name": "북어국",
+    "category": "국 및 탕류",
+    "kcalPer100g": 28.0,
+    "carbPer100g": 0.84,
+    "proteinPer100g": 3.89,
+    "fatPer100g": 0.98
+  },
+  {
+    "id": "D105-210000000-0001",
+    "name": "달걀국",
+    "category": "국 및 탕류",
+    "kcalPer100g": 13.0,
+    "carbPer100g": 0.69,
+    "proteinPer100g": 0.93,
+    "fatPer100g": 0.74
+  },
+  {
+    "id": "D105-237000000-0001",
+    "name": "어묵국(어묵탕)",
+    "category": "국 및 탕류",
+    "kcalPer100g": 31.0,
+    "carbPer100g": 3.83,
+    "proteinPer100g": 1.49,
+    "fatPer100g": 1.03
+  },
+  {
+    "id": "D105-200000000-0001",
+    "name": "감자국",
+    "category": "국 및 탕류",
+    "kcalPer100g": 21.0,
+    "carbPer100g": 3.67,
+    "proteinPer100g": 0.9,
+    "fatPer100g": 0.26
+  },
+  {
+    "id": "D103-145000000-0001",
+    "name": "떡국",
+    "category": "면 및 만두류",
+    "kcalPer100g": 84.0,
+    "carbPer100g": 16.37,
+    "proteinPer100g": 3.43,
+    "fatPer100g": 0.53
+  },
+  {
+    "id": "D105-245000000-0001",
+    "name": "육개장",
+    "category": "국 및 탕류",
+    "kcalPer100g": 30.0,
+    "carbPer100g": 1.49,
+    "proteinPer100g": 3.68,
+    "fatPer100g": 0.99
+  },
+  {
+    "id": "D105-199000000-0001",
+    "name": "갈비탕",
+    "category": "국 및 탕류",
+    "kcalPer100g": 54.0,
+    "carbPer100g": 0.4,
+    "proteinPer100g": 8.51,
+    "fatPer100g": 2.06
+  },
+  {
+    "id": "D105-228000000-0001",
+    "name": "삼계탕",
+    "category": "국 및 탕류",
+    "kcalPer100g": 101.0,
+    "carbPer100g": 3.84,
+    "proteinPer100g": 10.68,
+    "fatPer100g": 4.8
+  },
+  {
+    "id": "D105-231000000-0001",
+    "name": "설렁탕",
+    "category": "국 및 탕류",
+    "kcalPer100g": 24.0,
+    "carbPer100g": 0.36,
+    "proteinPer100g": 4.26,
+    "fatPer100g": 0.58
+  },
+  {
+    "id": "D306-266000000-0001",
+    "name": "김치찌개",
+    "category": "찌개 및 전골류",
+    "kcalPer100g": 61.0,
+    "carbPer100g": 2.98,
+    "proteinPer100g": 3.77,
+    "fatPer100g": 3.75
+  },
+  {
+    "id": "D106-275000000-0001",
+    "name": "된장찌개",
+    "category": "찌개 및 전골류",
+    "kcalPer100g": 46.0,
+    "carbPer100g": 4.44,
+    "proteinPer100g": 3.38,
+    "fatPer100g": 1.63
+  },
+  {
+    "id": "D106-291030000-0001",
+    "name": "순두부찌개_김치",
+    "category": "찌개 및 전골류",
+    "kcalPer100g": 35.0,
+    "carbPer100g": 2.17,
+    "proteinPer100g": 2.98,
+    "fatPer100g": 1.59
+  },
+  {
+    "id": "D106-284000000-0001",
+    "name": "부대찌개",
+    "category": "찌개 및 전골류",
+    "kcalPer100g": 123.0,
+    "carbPer100g": 10.27,
+    "proteinPer100g": 5.86,
+    "fatPer100g": 6.49
+  },
+  {
+    "id": "D106-297000000-0001",
+    "name": "청국장찌개",
+    "category": "찌개 및 전골류",
+    "kcalPer100g": 47.0,
+    "carbPer100g": 1.92,
+    "proteinPer100g": 5.03,
+    "fatPer100g": 2.11
+  },
+  {
+    "id": "D106-260000000-0001",
+    "name": "감자탕",
+    "category": "찌개 및 전골류",
+    "kcalPer100g": 71.0,
+    "carbPer100g": 2.27,
+    "proteinPer100g": 6.31,
+    "fatPer100g": 4.06
+  },
+  {
+    "id": "D315-670000000-0001",
+    "name": "배추김치",
+    "category": "김치류",
+    "kcalPer100g": 38.0,
+    "carbPer100g": 6.49,
+    "proteinPer100g": 1.98,
+    "fatPer100g": 0.43
+  },
+  {
+    "id": "D115-665000000-0001",
+    "name": "깍두기",
+    "category": "김치류",
+    "kcalPer100g": 33.0,
+    "carbPer100g": 4.24,
+    "proteinPer100g": 1.56,
+    "fatPer100g": 1.06
+  },
+  {
+    "id": "D315-675000000-0001",
+    "name": "열무김치",
+    "category": "김치류",
+    "kcalPer100g": 36.0,
+    "carbPer100g": 5.87,
+    "proteinPer100g": 2.39,
+    "fatPer100g": 0.38
+  },
+  {
+    "id": "D110-465000000-0001",
+    "name": "돼지고기볶음(제육볶음)",
+    "category": "볶음류",
+    "kcalPer100g": 195.0,
+    "carbPer100g": 4.73,
+    "proteinPer100g": 12.15,
+    "fatPer100g": 14.19
+  },
+  {
+    "id": "D110-488000000-0001",
+    "name": "오징어볶음",
+    "category": "볶음류",
+    "kcalPer100g": 128.0,
+    "carbPer100g": 7.43,
+    "proteinPer100g": 9.85,
+    "fatPer100g": 6.52
+  },
+  {
+    "id": "D110-462000000-0001",
+    "name": "닭볶음(닭갈비)",
+    "category": "볶음류",
+    "kcalPer100g": 186.0,
+    "carbPer100g": 7.93,
+    "proteinPer100g": 13.98,
+    "fatPer100g": 10.96
+  },
+  {
+    "id": "D108-386000000-0001",
+    "name": "소불고기",
+    "category": "구이류",
+    "kcalPer100g": 170.0,
+    "carbPer100g": 4.26,
+    "proteinPer100g": 16.41,
+    "fatPer100g": 9.66
+  },
+  {
+    "id": "D312-550000000-0002",
+    "name": "돈가스",
+    "category": "튀김류",
+    "kcalPer100g": 280.0,
+    "carbPer100g": 15.89,
+    "proteinPer100g": 13.85,
+    "fatPer100g": 17.94
+  },
+  {
+    "id": "D108-357110000-0001",
+    "name": "고등어구이_석쇠",
+    "category": "구이류",
+    "kcalPer100g": 340.0,
+    "carbPer100g": 3.79,
+    "proteinPer100g": 23.38,
+    "fatPer100g": 25.69
+  },
+  {
+    "id": "D312-549160000-0001",
+    "name": "닭튀김_양념",
+    "category": "튀김류",
+    "kcalPer100g": 276.0,
+    "carbPer100g": 21.15,
+    "proteinPer100g": 17.75,
+    "fatPer100g": 13.4
+  },
+  {
+    "id": "D312-559000000-0001",
+    "name": "생선까스",
+    "category": "튀김류",
+    "kcalPer100g": 327.0,
+    "carbPer100g": 23.28,
+    "proteinPer100g": 12.17,
+    "fatPer100g": 20.55
+  },
+  {
+    "id": "D109-416000000-0001",
+    "name": "달걀말이",
+    "category": "전·적 및 부침류",
+    "kcalPer100g": 193.0,
+    "carbPer100g": 1.45,
+    "proteinPer100g": 17.21,
+    "fatPer100g": 13.21
+  },
+  {
+    "id": "D107-317120000-0001",
+    "name": "달걀찜_새우젓",
+    "category": "찜류",
+    "kcalPer100g": 58.0,
+    "carbPer100g": 0.47,
+    "proteinPer100g": 4.98,
+    "fatPer100g": 4.04
+  },
+  {
+    "id": "D111-517000000-0001",
+    "name": "두부조림",
+    "category": "조림류",
+    "kcalPer100g": 143.0,
+    "carbPer100g": 4.4,
+    "proteinPer100g": 9.64,
+    "fatPer100g": 9.66
+  },
+  {
+    "id": "D111-508000000-0001",
+    "name": "감자조림",
+    "category": "조림류",
+    "kcalPer100g": 114.0,
+    "carbPer100g": 18.1,
+    "proteinPer100g": 2.4,
+    "fatPer100g": 3.52
+  },
+  {
+    "id": "D111-532080000-0001",
+    "name": "장조림_소고기",
+    "category": "조림류",
+    "kcalPer100g": 69.0,
+    "carbPer100g": 4.84,
+    "proteinPer100g": 10.41,
+    "fatPer100g": 0.86
+  },
+  {
+    "id": "D110-472000000-0001",
+    "name": "멸치볶음",
+    "category": "볶음류",
+    "kcalPer100g": 276.0,
+    "carbPer100g": 13.62,
+    "proteinPer100g": 39.44,
+    "fatPer100g": 7.08
+  },
+  {
+    "id": "D110-486000000-0001",
+    "name": "어묵볶음",
+    "category": "볶음류",
+    "kcalPer100g": 197.0,
+    "carbPer100g": 24.33,
+    "proteinPer100g": 8.41,
+    "fatPer100g": 7.29
+  },
+  {
+    "id": "D110-492000000-0001",
+    "name": "잡채",
+    "category": "볶음류",
+    "kcalPer100g": 146.0,
+    "carbPer100g": 24.26,
+    "proteinPer100g": 4.71,
+    "fatPer100g": 3.3
+  },
+  {
+    "id": "D113-586000000-0001",
+    "name": "시금치나물",
+    "category": "나물·숙채류",
+    "kcalPer100g": 69.0,
+    "carbPer100g": 3.36,
+    "proteinPer100g": 3.74,
+    "fatPer100g": 4.46
+  },
+  {
+    "id": "D113-597000000-0001",
+    "name": "콩나물무침",
+    "category": "나물·숙채류",
+    "kcalPer100g": 69.0,
+    "carbPer100g": 3.2,
+    "proteinPer100g": 3.86,
+    "fatPer100g": 4.54
+  },
+  {
+    "id": "D114-619000000-0001",
+    "name": "도라지생채",
+    "category": "생채·무침류",
+    "kcalPer100g": 77.0,
+    "carbPer100g": 16.15,
+    "proteinPer100g": 2.06,
+    "fatPer100g": 0.51
+  },
+  {
+    "id": "D314-645000000-0001",
+    "name": "오이생채",
+    "category": "생채·무침류",
+    "kcalPer100g": 50.0,
+    "carbPer100g": 7.97,
+    "proteinPer100g": 1.44,
+    "fatPer100g": 1.34
+  },
+  {
+    "id": "D109-412000000-0001",
+    "name": "김치전",
+    "category": "전·적 및 부침류",
+    "kcalPer100g": 134.0,
+    "carbPer100g": 19.01,
+    "proteinPer100g": 5.05,
+    "fatPer100g": 4.2
+  },
+  {
+    "id": "D312-549000000-0001",
+    "name": "닭튀김",
+    "category": "튀김류",
+    "kcalPer100g": 301.0,
+    "carbPer100g": 16.27,
+    "proteinPer100g": 21.73,
+    "fatPer100g": 16.57
+  },
+  {
+    "id": "D312-541000000-0001",
+    "name": "김말이튀김",
+    "category": "튀김류",
+    "kcalPer100g": 195.0,
+    "carbPer100g": 30.51,
+    "proteinPer100g": 2.05,
+    "fatPer100g": 7.2
+  },
+  {
+    "id": "D112-537000000-0001",
+    "name": "감자튀김",
+    "category": "튀김류",
+    "kcalPer100g": 312.0,
+    "carbPer100g": 35.15,
+    "proteinPer100g": 4.55,
+    "fatPer100g": 17.01
+  },
+  {
+    "id": "D103-150030000-0001",
+    "name": "만두_군만두",
+    "category": "면 및 만두류",
+    "kcalPer100g": 234.0,
+    "carbPer100g": 25.57,
+    "proteinPer100g": 7.03,
+    "fatPer100g": 11.5
+  },
+  {
+    "id": "D103-168000000-0001",
+    "name": "자장면",
+    "category": "면 및 만두류",
+    "kcalPer100g": 88.0,
+    "carbPer100g": 14.37,
+    "proteinPer100g": 2.69,
+    "fatPer100g": 2.22
+  },
+  {
+    "id": "D103-172000000-0001",
+    "name": "짬뽕",
+    "category": "면 및 만두류",
+    "kcalPer100g": 58.0,
+    "carbPer100g": 8.26,
+    "proteinPer100g": 2.79,
+    "fatPer100g": 1.54
+  },
+  {
+    "id": "D103-148000000-0001",
+    "name": "라면",
+    "category": "면 및 만두류",
+    "kcalPer100g": 82.0,
+    "carbPer100g": 13.65,
+    "proteinPer100g": 1.72,
+    "fatPer100g": 2.28
+  },
+  {
+    "id": "D103-164400000-0001",
+    "name": "우동_일식",
+    "category": "면 및 만두류",
+    "kcalPer100g": 158.0,
+    "carbPer100g": 30.48,
+    "proteinPer100g": 1.78,
+    "fatPer100g": 3.22
+  },
+  {
+    "id": "D103-142410000-0001",
+    "name": "국수_잔치국수",
+    "category": "면 및 만두류",
+    "kcalPer100g": 44.0,
+    "carbPer100g": 8.05,
+    "proteinPer100g": 1.93,
+    "fatPer100g": 0.49
+  },
+  {
+    "id": "D103-144280000-0001",
+    "name": "냉면_비빔냉면",
+    "category": "면 및 만두류",
+    "kcalPer100g": 100.0,
+    "carbPer100g": 13.35,
+    "proteinPer100g": 5.67,
+    "fatPer100g": 2.64
+  },
+  {
+    "id": "D103-144180000-0001",
+    "name": "냉면_물냉면",
+    "category": "면 및 만두류",
+    "kcalPer100g": 55.0,
+    "carbPer100g": 10.31,
+    "proteinPer100g": 1.96,
+    "fatPer100g": 0.64
+  },
+  {
+    "id": "D103-174000000-0001",
+    "name": "칼국수",
+    "category": "면 및 만두류",
+    "kcalPer100g": 77.0,
+    "carbPer100g": 14.9,
+    "proteinPer100g": 3.3,
+    "fatPer100g": 0.49
+  },
+  {
+    "id": "D303-161490000-0001",
+    "name": "스파게티_토마토소스",
+    "category": "면 및 만두류",
+    "kcalPer100g": 129.0,
+    "carbPer100g": 18.64,
+    "proteinPer100g": 4.87,
+    "fatPer100g": 3.83
+  },
+  {
+    "id": "D103-173000000-0001",
+    "name": "쫄면",
+    "category": "면 및 만두류",
+    "kcalPer100g": 129.0,
+    "carbPer100g": 23.26,
+    "proteinPer100g": 3.21,
+    "fatPer100g": 2.52
+  },
+  {
+    "id": "D303-157000000-0001",
+    "name": "비빔국수",
+    "category": "면 및 만두류",
+    "kcalPer100g": 113.0,
+    "carbPer100g": 20.0,
+    "proteinPer100g": 3.4,
+    "fatPer100g": 2.1
+  },
+  {
+    "id": "D110-467000000-0001",
+    "name": "떡볶이",
+    "category": "볶음류",
+    "kcalPer100g": 144.0,
+    "carbPer100g": 25.96,
+    "proteinPer100g": 3.51,
+    "fatPer100g": 2.96
+  },
+  {
+    "id": "D107-337000000-0001",
+    "name": "순대",
+    "category": "찜류",
+    "kcalPer100g": 187.0,
+    "carbPer100g": 35.73,
+    "proteinPer100g": 2.75,
+    "fatPer100g": 3.64
+  },
+  {
+    "id": "D302-122000000-0001",
+    "name": "핫도그",
+    "category": "빵 및 과자류",
+    "kcalPer100g": 341.0,
+    "carbPer100g": 24.95,
+    "proteinPer100g": 7.98,
+    "fatPer100g": 23.23
+  },
+  {
+    "id": "D102-123000000-0001",
+    "name": "햄버거",
+    "category": "빵 및 과자류",
+    "kcalPer100g": 264.0,
+    "carbPer100g": 21.67,
+    "proteinPer100g": 12.85,
+    "fatPer100g": 13.98
+  },
+  {
+    "id": "D302-086000000-0001",
+    "name": "마카롱",
+    "category": "빵 및 과자류",
+    "kcalPer100g": 480.0,
+    "carbPer100g": 45.23,
+    "proteinPer100g": 6.92,
+    "fatPer100g": 30.11
+  },
+  {
+    "id": "D102-120350000-0001",
+    "name": "피자_콤비네이션피자",
+    "category": "빵 및 과자류",
+    "kcalPer100g": 274.0,
+    "carbPer100g": 25.54,
+    "proteinPer100g": 10.68,
+    "fatPer100g": 14.36
+  },
+  {
+    "id": "D102-096431100-0001",
+    "name": "샌드위치_햄_달걀",
+    "category": "빵 및 과자류",
+    "kcalPer100g": 220.0,
+    "carbPer100g": 15.64,
+    "proteinPer100g": 12.44,
+    "fatPer100g": 11.92
+  },
+  {
+    "id": "D102-110210000-0001",
+    "name": "케이크_생크림케이크",
+    "category": "빵 및 과자류",
+    "kcalPer100g": 237.0,
+    "carbPer100g": 27.62,
+    "proteinPer100g": 3.45,
+    "fatPer100g": 12.54
+  },
+  {
+    "id": "D302-110330000-0001",
+    "name": "케이크_치즈케이크",
+    "category": "빵 및 과자류",
+    "kcalPer100g": 329.0,
+    "carbPer100g": 28.64,
+    "proteinPer100g": 7.23,
+    "fatPer100g": 20.63
+  },
+  {
+    "id": "D102-082290000-0001",
+    "name": "도넛_찹쌀",
+    "category": "빵 및 과자류",
+    "kcalPer100g": 288.0,
+    "carbPer100g": 55.56,
+    "proteinPer100g": 6.0,
+    "fatPer100g": 4.64
+  },
+  {
+    "id": "D102-111000000-0001",
+    "name": "크로와상",
+    "category": "빵 및 과자류",
+    "kcalPer100g": 446.0,
+    "carbPer100g": 43.31,
+    "proteinPer100g": 7.52,
+    "fatPer100g": 26.98
+  },
+  {
+    "id": "D102-087000000-0001",
+    "name": "머핀",
+    "category": "빵 및 과자류",
+    "kcalPer100g": 384.0,
+    "carbPer100g": 59.15,
+    "proteinPer100g": 5.73,
+    "fatPer100g": 13.84
+  },
+  {
+    "id": "D319-709053900-0001",
+    "name": "빙수_팥_우유얼음",
+    "category": "유제품류 및 빙과류",
+    "kcalPer100g": 146.0,
+    "carbPer100g": 31.49,
+    "proteinPer100g": 3.24,
+    "fatPer100g": 0.79
+  },
+  {
+    "id": "D320-748080000-0001",
+    "name": "커피_아메리카노",
+    "category": "음료 및 차류",
+    "kcalPer100g": 4.0,
+    "carbPer100g": 0.66,
+    "proteinPer100g": 0.23,
+    "fatPer100g": 0.03
+  },
+  {
+    "id": "D320-748110000-0001",
+    "name": "커피_카페라떼",
+    "category": "음료 및 차류",
+    "kcalPer100g": 57.0,
+    "carbPer100g": 3.11,
+    "proteinPer100g": 2.72,
+    "fatPer100g": 3.72
+  },
+  {
+    "id": "D320-748130000-0001",
+    "name": "커피_카푸치노",
+    "category": "음료 및 차류",
+    "kcalPer100g": 54.0,
+    "carbPer100g": 3.23,
+    "proteinPer100g": 2.67,
+    "fatPer100g": 3.38
+  },
+  {
+    "id": "D320-748120000-0001",
+    "name": "커피_카페모카",
+    "category": "음료 및 차류",
+    "kcalPer100g": 72.0,
+    "carbPer100g": 10.46,
+    "proteinPer100g": 2.76,
+    "fatPer100g": 2.08
+  },
+  {
+    "id": "D320-723010000-0001",
+    "name": "라떼_그린티",
+    "category": "음료 및 차류",
+    "kcalPer100g": 76.0,
+    "carbPer100g": 10.33,
+    "proteinPer100g": 2.97,
+    "fatPer100g": 2.56
+  },
+  {
+    "id": "D320-723050000-0001",
+    "name": "라떼_바닐라",
+    "category": "음료 및 차류",
+    "kcalPer100g": 72.0,
+    "carbPer100g": 8.38,
+    "proteinPer100g": 2.58,
+    "fatPer100g": 3.17
+  },
+  {
+    "id": "D320-731060000-0001",
+    "name": "밀크티_블랙",
+    "category": "음료 및 차류",
+    "kcalPer100g": 49.0,
+    "carbPer100g": 5.3,
+    "proteinPer100g": 1.0,
+    "fatPer100g": 2.64
+  },
+  {
+    "id": "D320-738000000-0001",
+    "name": "식혜",
+    "category": "음료 및 차류",
+    "kcalPer100g": 87.0,
+    "carbPer100g": 16.21,
+    "proteinPer100g": 1.53,
+    "fatPer100g": 1.75
+  },
+  {
+    "id": "D120-730000000-0001",
+    "name": "미숫가루",
+    "category": "음료 및 차류",
+    "kcalPer100g": 70.0,
+    "carbPer100g": 10.42,
+    "proteinPer100g": 2.08,
+    "fatPer100g": 2.27
+  },
+  {
+    "id": "D320-725000000-0001",
+    "name": "레몬청차",
+    "category": "음료 및 차류",
+    "kcalPer100g": 60.0,
+    "carbPer100g": 14.8,
+    "proteinPer100g": 0.13,
+    "fatPer100g": 0.01
+  },
+  {
+    "id": "D320-716042200-0001",
+    "name": "과ㆍ채주스_딸기_바나나",
+    "category": "음료 및 차류",
+    "kcalPer100g": 54.0,
+    "carbPer100g": 11.06,
+    "proteinPer100g": 1.37,
+    "fatPer100g": 0.52
+  },
+  {
+    "id": "D320-716180000-0001",
+    "name": "과ㆍ채주스_혼합과일주스",
+    "category": "음료 및 차류",
+    "kcalPer100g": 59.0,
+    "carbPer100g": 13.19,
+    "proteinPer100g": 0.77,
+    "fatPer100g": 0.37
+  },
+  {
+    "id": "D319-714010000-0001",
+    "name": "우유_딸기",
+    "category": "유제품류 및 빙과류",
+    "kcalPer100g": 73.0,
+    "carbPer100g": 11.04,
+    "proteinPer100g": 2.04,
+    "fatPer100g": 2.31
+  }
+]

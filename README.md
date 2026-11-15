@@ -173,4 +173,13 @@ ViewModel은 생성자로 Repository와 `PhotoStorage` 인터페이스를 받게
 ```
 **결과**: lifecycle-viewmodel-compose 의존성을 추가하고, 최상단 `DietApp`에서 Repository·PhotoStorage를 `remember`로 한 번만 만들어 인터페이스 타입으로 넘기도록 함. `MainActivity`는 `DietApp()`만 호출하게 바꿈. 빌드 성공.
 
+12. Fake 구현과 검색 테스트
+```
+테스트용 `FakeFoodRepository`, `FakeMealRepository`, `FakePhotoStorage`(받은 문자열로 가짜 경로를 돌려줌)를 `app/src/test`에 만들어줘. 네트워크나 파일 없이 미리 정한 값을 돌려주는 인터페이스 구현이야. 필요한 test 의존성(kotlinx-coroutines-test)도 추가해줘. 그리고 `searchFoods` 함수의 JUnit 테스트를 만들어줘.
+
+- "김치"로 검색하면 이름에 "김치"가 들어간 음식만 나옴
+- 공백 검색어는 빈 목록
+```
+**결과**: kotlinx-coroutines-test 1.10.2를 추가하고, `fake` 패키지에 메모리 기반 Fake 3개를 만듦. `FoodSearchTest`에 테스트 2개를 작성해 모두 통과.
+
 ### 조가람 (@river040118)

@@ -28,6 +28,7 @@ import com.example.diet_management.data.MealRepository
 import com.example.diet_management.data.PhotoStorage
 import com.example.diet_management.ui.analysis.AnalysisScreen
 import com.example.diet_management.ui.input.MealInputScreen
+import com.example.diet_management.ui.input.MealInputViewModel
 import com.example.diet_management.ui.list.MealListScreen
 import com.example.diet_management.ui.list.MealListViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -105,7 +106,15 @@ private fun DietContent(
                 AnalysisScreen()
             }
             composable<MealInput> {
-                MealInputScreen(onBack = { navController.navigateUp() })
+                val viewModel = viewModel {
+                    MealInputViewModel(mealRepository, foodRepository, photoStorage)
+                }
+                MealInputScreen(
+                    viewModel = viewModel,
+                    onBack = { navController.navigateUp() },
+                    // 새 식사 선택은 2단 화면(ListDetailPaneScaffold) 단계에서 연결
+                    onSaved = { navController.popBackStack() },
+                )
             }
         }
     }

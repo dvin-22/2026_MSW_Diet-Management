@@ -334,4 +334,18 @@ ViewModel은 생성자로 Repository와 `PhotoStorage` 인터페이스를 받게
 ```
 **결과**: 리소스 폴더는 하위 폴더·한글 파일명을 쓸 수 없어 사진 10장을 `assets/sample_meal/`로 옮기고 1280px로 줄임. `SampleDataSeeder`가 `meals.json`이 없을 때만 사진별 음식 구성으로 하루 2~4끼, 30일치 샘플을 만들고, `DietApp`이 샘플 생성 후 화면을 띄우도록 함. 빌드 성공.
 
+26. 자몽색 라이트·다크 테마
+```
+`ui/theme`의 Material 3 테마를 자몽색 테마로 바꿔줘. `MaterialTheme`의 colorScheme·typography·shapes로 한 곳에서 관리해줘.
+
+- primary는 자몽색(#F2735A 근처)으로 하고, 나머지 색도 자몽 계열 단색 톤으로 맞춰줘
+- 라이트용 `lightColorScheme`과 다크용 `darkColorScheme`을 둘 다 만들어줘. 다크는 배경과 surface까지 자몽 계열의 어두운 톤으로, primary는 밝은 자몽색으로
+- `isSystemInDarkTheme()`으로 시스템 설정을 따라 전환하고, 다이나믹 컬러는 꺼줘
+- 컴포넌트에서는 색을 하드코딩하지 말고 `MaterialTheme.colorScheme`을 참조하게 해줘
+- 라이트와 다크 모두 글자와 배경의 대비가 충분한지 확인해줘
+
+- 이미 만든 화면에 하드코딩된 색이 있으면 `MaterialTheme.colorScheme` 참조로 바꿔줘
+```
+**결과**: 자몽 단색 팔레트로 `lightColorScheme`과 `darkColorScheme`을 만들고, 시스템 다크 모드를 따르며 다이나믹 컬러를 제거함. 주요 글자/배경 조합의 대비를 계산해 모두 4.5:1 이상인지 확인함. `Shape.kt`를 추가하고 화면의 모서리 값을 `MaterialTheme.shapes`로 바꿈. 빌드 성공.
+
 ### 조가람 (@river040118)

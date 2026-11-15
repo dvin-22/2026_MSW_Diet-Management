@@ -1,58 +1,80 @@
 package com.example.diet_management.ui.theme
 
-import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
-
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = GrapefruitLightPrimary,
+    onPrimary = GrapefruitLightOnPrimary,
+    primaryContainer = GrapefruitLightPrimaryContainer,
+    onPrimaryContainer = GrapefruitLightOnPrimaryContainer,
+    secondary = GrapefruitLightSecondary,
+    onSecondary = GrapefruitLightOnSecondary,
+    secondaryContainer = GrapefruitLightSecondaryContainer,
+    onSecondaryContainer = GrapefruitLightOnSecondaryContainer,
+    tertiary = GrapefruitLightTertiary,
+    onTertiary = GrapefruitLightOnTertiary,
+    tertiaryContainer = GrapefruitLightTertiaryContainer,
+    onTertiaryContainer = GrapefruitLightOnTertiaryContainer,
+    background = GrapefruitLightBackground,
+    onBackground = GrapefruitLightOnBackground,
+    surface = GrapefruitLightBackground,
+    onSurface = GrapefruitLightOnBackground,
+    surfaceVariant = GrapefruitLightSurfaceVariant,
+    onSurfaceVariant = GrapefruitLightOnSurfaceVariant,
+    outline = GrapefruitLightOutline,
+    outlineVariant = GrapefruitLightOutlineVariant,
+    surfaceContainerLowest = GrapefruitLightSurfaceContainerLowest,
+    surfaceContainerLow = GrapefruitLightSurfaceContainerLow,
+    surfaceContainer = GrapefruitLightSurfaceContainer,
+    surfaceContainerHigh = GrapefruitLightSurfaceContainerHigh,
+    surfaceContainerHighest = GrapefruitLightSurfaceContainerHighest,
 )
 
+private val DarkColorScheme = darkColorScheme(
+    primary = GrapefruitDarkPrimary,
+    onPrimary = GrapefruitDarkOnPrimary,
+    primaryContainer = GrapefruitDarkPrimaryContainer,
+    onPrimaryContainer = GrapefruitDarkOnPrimaryContainer,
+    secondary = GrapefruitDarkSecondary,
+    onSecondary = GrapefruitDarkOnSecondary,
+    secondaryContainer = GrapefruitDarkSecondaryContainer,
+    onSecondaryContainer = GrapefruitDarkOnSecondaryContainer,
+    tertiary = GrapefruitDarkTertiary,
+    onTertiary = GrapefruitDarkOnTertiary,
+    tertiaryContainer = GrapefruitDarkTertiaryContainer,
+    onTertiaryContainer = GrapefruitDarkOnTertiaryContainer,
+    background = GrapefruitDarkBackground,
+    onBackground = GrapefruitDarkOnBackground,
+    surface = GrapefruitDarkBackground,
+    onSurface = GrapefruitDarkOnBackground,
+    surfaceVariant = GrapefruitDarkSurfaceVariant,
+    onSurfaceVariant = GrapefruitDarkOnSurfaceVariant,
+    outline = GrapefruitDarkOutline,
+    outlineVariant = GrapefruitDarkOutlineVariant,
+    surfaceContainerLowest = GrapefruitDarkSurfaceContainerLowest,
+    surfaceContainerLow = GrapefruitDarkSurfaceContainerLow,
+    surfaceContainer = GrapefruitDarkSurfaceContainer,
+    surfaceContainerHigh = GrapefruitDarkSurfaceContainerHigh,
+    surfaceContainerHighest = GrapefruitDarkSurfaceContainerHighest,
+)
+
+/**
+ * 앱 전체 테마. 색·글꼴·모양을 이곳 한 곳에서 관리한다.
+ * 시스템 다크 모드 설정을 따르며, 자몽 색을 유지하려고 다이나믹 컬러는 쓰지 않는다.
+ */
 @Composable
 fun DietmanagementTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme,
         typography = Typography,
-        content = content
+        shapes = AppShapes,
+        content = content,
     )
 }

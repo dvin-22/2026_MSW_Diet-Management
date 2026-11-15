@@ -268,4 +268,14 @@ ViewModel은 생성자로 Repository와 `PhotoStorage` 인터페이스를 받게
 ```
 **결과**: 검색창·검색 결과, 섭취량 입력 다이얼로그(숫자 키보드), 담은 음식 목록(삭제 버튼), 영양소 미리보기 카드, 오류 문구, 저장 버튼을 추가함. 저장이 끝나면 목록으로 돌아가고, 미리보기 값 4개와 저장 버튼에 `testTag`를 붙임. 빌드 성공.
 
+20. 식사 입력 화면 적응형 레이아웃
+```
+입력 화면을 적응형으로 바꿔줘. 창 너비는 `currentWindowAdaptiveInfo()`로 읽어줘.
+
+- 창 너비가 Expanded(840dp) 이상이면(`isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_EXPANDED_LOWER_BOUND)`) `Row`로 2단: 왼쪽은 사진 미리보기, 날짜·시각·끼니, 오른쪽은 음식 검색과 담은 목록, 영양소 미리보기 카드, 저장 버튼
+- 840dp 미만이면 지금처럼 한 줄로 세로 스크롤
+- 두 레이아웃이 같은 ViewModel 상태와 하위 Composable을 재사용하게 해줘(중복 코드 없이)
+```
+**결과**: 기본 정보와 음식·저장 영역을 Composable 묶음으로 한 번만 정의하고, 840dp 이상이면 `Row` 2단, 미만이면 한 줄 세로 스크롤로 배치함. 빌드 성공.
+
 ### 조가람 (@river040118)

@@ -14,7 +14,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
+import androidx.window.core.layout.WindowSizeClass
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ListItem
@@ -126,14 +129,8 @@ private fun MealInputContent(
             )
         },
     ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .verticalScroll(rememberScrollState())
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(24.dp),
-        ) {
+        // 두 레이아웃이 같은 하위 Composable을 쓰도록 왼쪽(기본 정보)·오른쪽(음식·저장) 묶음을 한 번만 정의한다.
+        val basicInfo: @Composable () -> Unit = {
             PhotoSection(
                 photoPath = state.photoPath,
                 onPhotoPicked = onPhotoPicked,
@@ -148,6 +145,8 @@ private fun MealInputContent(
                 selected = state.mealType,
                 onSelect = onMealTypeChange,
             )
+        }
+        val foodAndSave: @Composable () -> Unit = {
             FoodSearchSection(
                 query = state.query,
                 results = state.searchResults,
@@ -172,6 +171,44 @@ private fun MealInputContent(
                 Text("저장")
             }
         }
+
+        val isExpanded = currentWindowAdaptiveInfo().windowSizeClass
+            .isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_EXPANDED_LOWER_BOUND)
+        val outerModifier = Modifier.fillMaxSize().padding(innerPadding)
+
+        if (isExpanded) {
+            // 840dp 이상: 왼쪽·오른쪽 2단, 각 단은 따로 스크롤한다.
+            Row(
+                modifier = outerModifier.padding(horizontal = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(24.dp),
+            ) {
+                ScrollingColumn(Modifier.weight(1f)) { basicInfo() }
+                ScrollingColumn(Modifier.weight(1f)) { foodAndSave() }
+            }
+        } else {
+            // 840dp 미만: 한 줄로 세로 스크롤
+            ScrollingColumn(outerModifier.padding(horizontal = 16.dp)) {
+                basicInfo()
+                foodAndSave()
+            }
+        }
+    }
+}
+
+/** 세로 스크롤되는 단. 항목 사이 간격을 일정하게 둔다. */
+@Composable
+private fun ScrollingColumn(
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit,
+) {
+    Column(
+        modifier = modifier
+            .fillMaxHeight()
+            .verticalScroll(rememberScrollState())
+            .padding(vertical = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(24.dp),
+    ) {
+        content()
     }
 }
 
